@@ -7,5 +7,10 @@ Inhalte
 
 ## Inhalte der einzelnen Vorlesungen
 
-### 07.10.2024
-<tbd>
+### 14.10.2024
+Intro.
+
+### 15.10.2024
+- Aufbau von index.html,
+- Einfache Elements, 
+- Attribute: style, href, src
