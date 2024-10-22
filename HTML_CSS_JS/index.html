@@ -1,12 +1,28 @@
 <html>
 <head>
+<link href="style/style.css" rel="stylesheet" />
 <title>
 Meine erste Webseite
 </title>
 </head>
-<body>
+<body style="color:blue">
 <h1>Kapitel 1</h1>
-<img src="bild.jpg" width="400px">
+<div id="my-id">
+    Text in ID Selektor
+</div>
+<div>
+    Text ohne ID Selektor
+</div>
+
+
+Text vorher
+<div class="specialtext">
+    Meiner erster Abschnitt
+    <p>
+        Mein zweiter Abschnitt
+    </p>
+</div>
+<img src="res/bild.jpg" width="100%">
 <h2>Abschnitt 1</h2>
 Hier <i><b>kommt</b> <u>der</u></i> Text
 <p>
@@ -19,5 +35,8 @@ Hier geht es zu <a href="https://www.haw-landshut.de">Hochschule Landshut</a>
 <div style="background-color:yellow">
 text im div
 </div>
+<input type="text" id="my_id"><br>
+<input type="password" id="my_password"><br>
+<button>Absenden</button>
 </body>
 </html>

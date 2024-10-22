@@ -1,0 +1,17 @@
+h1
+{
+    color: white;
+    background-color: red;
+    width: 50%;
+    border: 5px dashed rgb(202, 175, 175);
+  }
+  
+  .specialtext
+  {
+    color:green;
+    margin-top:20px;
+  }
+
+  #my-id{
+    background-color:salmon;
+  }

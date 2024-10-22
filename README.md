@@ -14,3 +14,16 @@ Intro.
 - Aufbau von index.html,
 - Einfache Elements, 
 - Attribute: style, href, src
+
+### 22.10.2024
+- Zusätzliche Elements: input
+- css
+  - What is CSS? 
+  - CSS Ruleset
+
+- css selectors
+  - ID selector
+  - Class selector
+  - Element  selector
+
+
