@@ -26,4 +26,12 @@ Intro.
   - Class selector
   - Element  selector
 
+### 29.10.2024
+- Bootstrap als UI Framework
+  - Durchsicht der Webseite
+  - exemplarische Einbindung in index.html
+  
+- JS (Teil A)
+  - script-Element
+  - Variablen, if-else, Schleifen, Funktionen, console.log
 
