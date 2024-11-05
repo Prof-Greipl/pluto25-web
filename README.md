@@ -37,5 +37,17 @@ Intro.
   - script-Element
   - Variablen, if-else, Schleifen, Funktionen, console.log
 
+### 05.11.2024
+
+- JS (Teil B)
+  - const
+  - addEventListener("click" , ), auch mit "mouseenter", "mouseout"
+  - style.display
+  - document.createElement()
+  - document.body.appendChild( )
 
 ## Teil B (Pluto25Web)
+
+### (auch am ) 05.11.2024
+  - Start von Pluto25-Web
+  
