@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Pluto 25</a>
+          <a class="navbar-brand" href="#" id="p25">Pluto 25</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -43,10 +43,58 @@
             </form>
           </div>
         </div>
-      </nav>
+    </nav> <!-- Ende of NavBar-->
+    <p id = "myPara">
+      Lore ipsum se
+    </p>
+    <button id="buAddText">Ausblenden</button>
+    <button id="buAddElem">Neues Element</button>
+    
 
  <script>
+  function component(){
+      const element = document.createElement('div')
+      element.innerHTML = "Hallo."
+      return element
+  }
+
+  function addComponent( c ){
+    document.body.appendChild(c)
+  }
+
+  const buAddElem = document.getElementById("p25")
+  buAddElem.addEventListener("click", () => {
+    ele = component()
+    addComponent(ele)
+  })
+
+  const myPara = document.getElementById("myPara")
+  myPara.addEventListener("click", () => console.log("You pressed in myPara"))
+
+  const buAddText = document.getElementById("buAddText")
+  var aus = false
+  buAddText.addEventListener("click", () => {
+    if (aus) {
+      myPara.style.display="block"
+      aus = false
+    }
+    else {
+      myPara.style.display="none"
+      aus = true
+    }
+    
+  })
+
+  buAddText.addEventListener("mouseenter", () => console.log("Reingefahren"))
+  buAddText.addEventListener("mouseout", () => console.log("Rausgefahren"))
+  
+  
+
+
    console.log("Hallo Welt")
+   const c = 5
+   // c = 2 erzeugt einen Fehler!
+    
    var x
    x = true
    console.log( x )
@@ -81,6 +129,8 @@
 
    console.log("\nAusgabe;:")
    console.log( f("Huber"))
+
+
  </script>     
 </body>
 </html>

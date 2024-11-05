@@ -7,6 +7,8 @@ Inhalte
 
 ## Inhalte der einzelnen Vorlesungen
 
+## Teil A (Einführung in HTML, CSS, Javascript)
+
 ### 14.10.2024
 Intro.
 
@@ -30,8 +32,10 @@ Intro.
 - Bootstrap als UI Framework
   - Durchsicht der Webseite
   - exemplarische Einbindung in index.html
-  
+
 - JS (Teil A)
   - script-Element
   - Variablen, if-else, Schleifen, Funktionen, console.log
 
+
+## Teil B (Pluto25Web)
