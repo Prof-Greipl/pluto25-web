@@ -50,4 +50,11 @@ Intro.
 
 ### (auch am ) 05.11.2024
   - Start von Pluto25-Web
-  
+
+### 12.11.2024
+  - Areas und Navigation
+  - Modal
+  - SignIn UI (teilweise)
+  - Main UI (teilweise)
+  - Übung: ManageAccount UI, Create Account UI
+      
