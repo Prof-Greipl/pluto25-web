@@ -58,3 +58,22 @@ Intro.
   - Main UI (teilweise)
   - Übung: ManageAccount UI, Create Account UI
       
+
+## Identfiers in HTML Part
+
+### Navigation Bar Links
+navHome
+navSignIn
+navManageAccount
+navCreateAccount
+
+### Areas 
+areaMain
+areaSignIn
+areaManageAccount
+areaCreateAccount
+
+
+
+
+
