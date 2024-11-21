@@ -58,20 +58,30 @@ Intro.
   - Main UI (teilweise)
   - Übung: ManageAccount UI, Create Account UI
       
+### 19.11.2024
+  - Klärung: Listener direkt an Element-id anhängen
+  - Update the HomeArea - add Listgroup 
+  - Add Element for `Template`
+  - Erzeugen von `mPostList`  mit Testeinträgen 
+  - Anzeigen der Testeinträge in der Listgroup
 
 ## Identfiers in HTML Part
 
 ### Navigation Bar Links
-navHome
-navSignIn
-navManageAccount
-navCreateAccount
+
+- navHome
+- navSignIn
+- navManageAccount
+- navCreateAccount
 
 ### Areas 
-areaMain
-areaSignIn
-areaManageAccount
-areaCreateAccount
+- areaMain
+  - ah_ul
+  - ah_message
+  - ah_send
+- areaSignIn
+- areaManageAccount
+- areaCreateAccount
 
 
 

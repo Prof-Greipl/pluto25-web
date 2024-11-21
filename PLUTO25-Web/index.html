@@ -21,8 +21,6 @@
             </li>
             <a class="nav-link active" aria-current="page" href="#" id="navCreateAccount">Create Account</a>
             <a class="nav-link active" aria-current="page" href="#" id="navManageAccount">Manage Account</a>
-            <a class="nav-link active" aria-current="page" href="#" id="navPost">Post</a>
-            
           </li>
         </ul>
       </div>
@@ -33,10 +31,13 @@
 <div id="areaMain"> <!-- areaMain-->
   <h3>Home</h3>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" id="mainMessage" placeholder="Your message">
+    <input type="text" class="form-control" id="ah_message" placeholder="Your message">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" id="mainSend">Send</button>
+      <button class="btn btn-outline-secondary" type="button" id="ah_send">Send</button>
     </div>
+  </div>
+  <div>
+    <ul id="ah_ul" class="list-group"></ul>
   </div>
 </div>
 
@@ -101,6 +102,12 @@
   </div>
 </div>
 </div>  
+<template id="post_view">
+  <li class="list-group-item">
+    <div id="line1"></div>
+    <div id="line2"></div>
+  </li>
+</template>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
  <script>
   const areaMain = document.getElementById("areaMain")
@@ -168,7 +175,26 @@ function displayModal( title, body){
 
 }
 
+// Erzeugung von Testdaten - muss später raus.
+var mPostList = [];
+for (let i=0; i < 3; i++){
+  mPostList.push({
+    email: "email_"+i+"@haw-landshut.de",
+    body: "Text"+i
+  })
+}
+
+console.log( mPostList );
+
+var template = document.getElementById("post_view")
+mPostList.forEach( (post) =>{
+  var li = template.content.cloneNode( true )
+  li.getElementById("line1").textContent = post.email;
+  li.getElementById("line2").textContent = post.body;
+  document.getElementById("ah_ul").appendChild( li )
+})
 
  </script>     
+ 
 </body>
 </html>
