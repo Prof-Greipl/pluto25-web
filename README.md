@@ -65,6 +65,10 @@ Intro.
   - Erzeugen von `mPostList`  mit Testeinträgen 
   - Anzeigen der Testeinträge in der Listgroup
 
+### 26.11.2024 (30 mins, Rest Fragestunde)
+  - Promises
+    
+
 ## Identfiers in HTML Part
 
 ### Navigation Bar Links

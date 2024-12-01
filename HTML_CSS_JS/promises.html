@@ -1,0 +1,18 @@
+<html>
+<body>
+<script>
+    console.log("Start");
+    
+    const myPromise = new Promise( (resolve, reject) => {
+        setTimeout( () => {
+            resolve("ok")
+        }, 3000)
+    })
+    .then( (result) => console.log( result ) )
+    .catch( (result) => console.log( result ))
+
+    console.log("Ende");
+      
+</script>     
+</body>
+</html>
