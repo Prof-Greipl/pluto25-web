@@ -57,7 +57,7 @@ Intro.
   - SignIn UI (teilweise)
   - Main UI (teilweise)
   - Übung: ManageAccount UI, Create Account UI
-      
+    
 ### 19.11.2024
   - Klärung: Listener direkt an Element-id anhängen
   - Update the HomeArea - add Listgroup 
@@ -67,6 +67,14 @@ Intro.
 
 ### 26.11.2024 (30 mins, Rest Fragestunde)
   - Promises
+    
+### 03.12.2024
+  - Web-Apps allgemein
+    -  Modularisieriung on JS Programmen
+    -  http-Server mit Python: `python.exe -m http.server`
+  - Pluto25Web
+    - Added Firebase to WebApp (see https://firebase.google.com/docs/web/setup?continue=https%3A%2F%2Ffirebase.google.com%2Flearn%2Fpathways%2Ffirebase-web%23article-https%3A%2F%2Ffirebase.google.com%2Fdocs%2Fweb%2Fsetup) 
+    - Link zu Web-API https://firebase.google.com/docs/reference/js 
     
 
 ## Identfiers in HTML Part
