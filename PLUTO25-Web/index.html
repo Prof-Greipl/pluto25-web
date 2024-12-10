@@ -20,7 +20,7 @@
             <a class="nav-link active" aria-current="page" id="navSignIn" href="#">Sign In</a>
             </li>
             <a class="nav-link active" aria-current="page" href="#" id="navCreateAccount">Create Account</a>
-            <a class="nav-link active" aria-current="page" href="#" id="navManageAccount">Manage Account</a>
+            <a class="nav-link active" aria-current="page" href="#" id="navManageAccount"></a>
           </li>
         </ul>
       </div>
@@ -45,19 +45,27 @@
   <h3>SignIn</h3>
   <form>
     <div class="form-group">
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="email" class="form-control" id="si_email" aria-describedby="emailHelp" placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" class="form-control" id="si_password" placeholder="Password">
     </div>
-    <button style="margin-top:5px" type="submit" class="btn btn-primary">Submit</button>
+    <button style="margin-top:5px" type="submit" id="si_button_signin" class="btn btn-primary">Submit</button>
   </form>
 </div>
 
+
 <div id="areaManageAccount"> <!-- areaManageAccout-->
   <h3>Manage Account</h3>
+  <div id="ma_line1"></div>
+  <div id="ma_line2"></div>
+  <button style="margin-top:5px" type="submit" id="ma_button_signout" class="btn btn-primary">Submit</button>
+ 
 </div>
+
+
+
 
 <div id="areaCreateAccount"> <!-- areaCreateAccount-->
   <h3>Create Account</h3>
@@ -114,7 +122,12 @@
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { 
+    getAuth, 
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
    
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -131,22 +144,29 @@
     measurementId: "G-LS8T70LTCE"
   };
 
+  var mUser;
+
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth()
-/*
-  createUserWithEmailAndPassword( auth, "dieter.greipl@google.com", "123456")
-  .then( (userCredential) => {
-    displayModal("Success", "User angelegt")
-  })
-  .catch( (error) => {
-    displayModal("Fail", "Code : " + error.message)
-  })
-*/
-  
+  const mAuth = getAuth()
 
+  onAuthStateChanged( mAuth, (user) => {
+    console.log("onAuthStateChanged")
+    if (user){
+      console.log("---> "+ user.email)
+      navSignIn.style.display="none"
+      navCreateAccount.style.display="none"
+      navManageAccount.innerHTML= user.email;
+      mUser = user;
+    } else {
+        navSignIn.style.display = "block"
+        navCreateAccount.style.display = "block"
+        navManageAccount.style.display = "none"
+        mUser = null
+      console.log("---> No user exisiting.")
+    }
+  })
 
-  
   const areaMain = document.getElementById("areaMain")
   const areaSignIn = document.getElementById("areaSignIn")
   const areaManageAccount = document.getElementById("areaManageAccount")
@@ -157,7 +177,20 @@
   const navManageAccount = document.getElementById("navManageAccount")
   const navCreateAccount = document.getElementById("navCreateAccount")
 
-  
+  document.getElementById("si_button_signin").addEventListener( "click", (event) =>{
+    event.preventDefault()
+    const email = si_email.value;
+    const password = si_password.value;
+    signInWithEmailAndPassword(mAuth, email, password)
+    .then( (userCredential) => {
+        mUser = userCredential.user;
+        displayModal("Sign In","Sie sind angemeldet.")
+    })
+    .catch( (error) => {
+      displayModal("Sign In","Fehler ", error.message)
+    } )    
+  })
+
   // Listener für Nav-Elemente
   navSignIn.addEventListener("click", () => {
     areaMain.style.display="none"
@@ -165,23 +198,19 @@
     areaManageAccount.style.display="none"
     areaCreateAccount.style.display="none"
   })
-  
-  // Listener für Nav-Elemente
+
   navHome.addEventListener("click", () => {
     areaMain.style.display="block"
     areaSignIn.style.display="none"
     areaManageAccount.style.display="none"
     areaCreateAccount.style.display="none"
   })
-
-// Listener für Nav-Elemente
   navCreateAccount.addEventListener("click", () => {
     areaMain.style.display="none"
     areaSignIn.style.display="none"
     areaManageAccount.style.display="none"
     areaCreateAccount.style.display="none"
     areaCreateAccount.style.display="block"
-    displayModal("Create Account", "Ihr Konto wurde erzeugt.")
   })
 
   // Listener für Nav-Elemente
@@ -191,8 +220,15 @@
     areaManageAccount.style.display="none"
     areaCreateAccount.style.display="none"
     areaManageAccount.style.display="block"
+
+    ma_line1.innerHTML = "UID : " + mUser.uid
+    ma_line2.innerHTML = "Account verified : " + mUser.emailVerified
   })
 
+  ma_button_signout.addEventListener( "click", () => {
+    signOut( mAuth )
+    displayModal("Sign Out", "Your are signed out.")
+  })
 
   
   // MainArea sichtbar schalten, andere areas ausblenden
@@ -201,6 +237,7 @@
   areaManageAccount.style.display="none"
   areaCreateAccount.style.display="none"
   
+
 function displayModal( title, body){
   let options = {
     keyboard:false
@@ -214,7 +251,7 @@ function displayModal( title, body){
 
 // Erzeugung von Testdaten - muss später raus.
 var mPostList = [];
-for (let i=0; i < 13; i++){
+for (let i=0; i < 3; i++){
   mPostList.push({
     email: "email_"+i+"@haw-landshut.de",
     body: "Text"+i

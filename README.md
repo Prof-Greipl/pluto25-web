@@ -76,6 +76,14 @@ Intro.
     - Added Firebase to WebApp (see https://firebase.google.com/docs/web/setup?continue=https%3A%2F%2Ffirebase.google.com%2Flearn%2Fpathways%2Ffirebase-web%23article-https%3A%2F%2Ffirebase.google.com%2Fdocs%2Fweb%2Fsetup) 
     - Link zu Web-API https://firebase.google.com/docs/reference/js 
     
+### 10.12.2024
+Link: https://firebase.google.com/docs/reference/js/auth
+  - Sign in/ sign out mit Firebase
+    - signInWithEmailAndPassword(mAuth, email, password) [in SignIn]
+    - signOut( mAuth ) [in ManageAccount]
+  - onAuthStateChanged()
+    - Modifikation des Navbars nach Anmeldestatus
+  - Offen: Create Account 
 
 ## Identfiers in HTML Part
 
