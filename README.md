@@ -85,6 +85,14 @@ Link: https://firebase.google.com/docs/reference/js/auth
     - Modifikation des Navbars nach Anmeldestatus
   - Offen: Create Account 
 
+### 17.12.2024
+  - Cleanup in der Navigation (Update in OnAuth..)
+  - Verbesserung von ManageAccount
+  - CreateAccount implementiert
+  - "Send" (Posting) implementiert
+  - Homework: SendVerificationMail
+  - Offen: Delete Account
+
 ## Identfiers in HTML Part
 
 ### Navigation Bar Links
