@@ -93,6 +93,9 @@ Link: https://firebase.google.com/docs/reference/js/auth
   - Homework: SendVerificationMail
   - Offen: Delete Account
 
+### 07.12.2024 (Programm)
+  - Display Posts  
+
 ## Identfiers in HTML Part
 
 ### Navigation Bar Links

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Navbar -->
     <div class="container-fluid">
       <a class="navbar-brand" href="#" id="navHome">Pluto 25</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,6 +31,7 @@
   </nav> <!-- Ende of NavBar-->
 
   <div style="margin-left:30px; margin-top:10px; margin-right:30px">
+
     <div id="areaMain"> <!-- areaMain-->
       <h3>Home</h3>
       <div class="input-group mb-3">
@@ -58,8 +59,7 @@
       </form>
     </div>
 
-
-    <div id="areaManageAccount"> <!-- areaxManageAccout-->
+    <div id="areaManageAccount"> <!-- areaManageAccout-->
       <h3>Manage Account</h3>
       <h6 class="mt-4">Technical User-Id</h6>
       <div id="ma_line1"></div>
@@ -73,10 +73,7 @@
 
     </div>
 
-
-
-
-    <div id="areaCreateAccount"> <!-- areaxCreateAccount-->
+    <div id="areaCreateAccount"> <!-- areaCreateAccount-->
       <h3>Create Account</h3>
       <form>
         <div class="form-group">
@@ -95,7 +92,6 @@
         <button style="margin-top:5px" type="submit" id="ca_create_account" class="btn btn-primary">Submit</button>
       </form>
     </div>
-
 
   </div>
 
@@ -268,6 +264,11 @@
         })
     })
 
+    ma_button_signout.addEventListener("click", () => {
+      signOut(mAuth)
+      displayModal("Sign Out", "Your are signed out.")
+    })
+
 
     // Listener für Nav-Elemente
     navSignIn.addEventListener("click", () => {
@@ -283,15 +284,15 @@
       areaManageAccount.style.display = "none"
       areaCreateAccount.style.display = "none"
     })
+
     navCreateAccount.addEventListener("click", () => {
       areaMain.style.display = "none"
       areaSignIn.style.display = "none"
       areaManageAccount.style.display = "none"
       areaCreateAccount.style.display = "none"
       areaCreateAccount.style.display = "block"
-    })
+    })   
 
-    // Listener für Nav-Elemente
     navManageAccount.addEventListener("click", () => {
       areaMain.style.display = "none"
       areaSignIn.style.display = "none"
@@ -308,10 +309,7 @@
         ma_line2.innerHTML = "Account needs verfification"
     })
 
-    ma_button_signout.addEventListener("click", () => {
-      signOut(mAuth)
-      displayModal("Sign Out", "Your are signed out.")
-    })
+
 
 
     // MainArea sichtbar schalten, andere areas ausblenden
