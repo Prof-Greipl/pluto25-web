@@ -142,7 +142,11 @@
     import {
       getFirestore,
       addDoc,
-      collection
+      collection,
+      onSnapshot,
+      query,
+      limit,
+      orderBy
     } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
     // TODO: Add SDKs for Firebase products that you want to use
@@ -165,12 +169,44 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const mAuth = getAuth()
-    const mDb = getFirestore( )
+    const mDb = getFirestore()
+
+
+
+
 
     onAuthStateChanged(mAuth, (user) => {
       console.log("onAuthStateChanged")
       if (user) {
         console.log("---> " + user.email)
+        
+        
+        var template = document.getElementById("post_view")
+       
+        // Listener anlegen ========================================
+
+        // Step 1:
+        // Diese colRef wollen wir überwachen lassen...
+        const my_coll_ref = query(collection(mDb, 'posts'), 
+						limit(5), 
+						orderBy( "createdAt", 'desc'))
+
+        // Step 2:
+        // Auf Snapshot reagierem und docs verarbeiten
+        const my_listener = onSnapshot(my_coll_ref, (querySnapshot) => {
+          console.log("Snapshot contained docs : ", querySnapshot.size)
+
+          document.getElementById("ah_ul").innerHTML=""
+          querySnapshot.forEach((doc) => {
+            console.log("Doc ID = ", doc.id, " von ", doc.get("email"))
+
+            var li = template.content.cloneNode(true)
+            li.getElementById("line1").textContent = doc.get("email");
+            li.getElementById("line2").textContent = doc.get("body");
+            document.getElementById("ah_ul").appendChild(li)
+          })
+        })
+        // =========================================================
 
         // Manage Navbar
         navSignIn.style.display = "none"
@@ -187,6 +223,8 @@
         mUser = user;
 
       } else {
+
+        document.getElementById("ah_ul").innerHTML=""
 
         // Manage Navbar
         navSignIn.style.display = "block"
@@ -216,9 +254,10 @@
     document.getElementById("ah_send").addEventListener("click", (event) => {
       event.preventDefault()
       var body = document.getElementById("ah_message").value
-      addDoc( collection(mDb, "posts"),
-        { body : body,
-          email : mUser.email,
+      addDoc(collection(mDb, "posts"),
+        {
+          body: body,
+          email: mUser.email,
           createdAt: new Date(),
           source: "Web"
         });
@@ -272,13 +311,13 @@
 
     document.getElementById("ma_button_send_verification_mail").addEventListener("click", () => {
       event.preventDefault()
-      sendEmailVerification( mUser )
-      .then( () =>{
-        displayModal("Email Verification", "Email was sent to " + mUser.email)
-      })
-      .catch( () => {
-        displayModal("Email Verification", "Failed sending email to " + mUser.email)
-      }) 
+      sendEmailVerification(mUser)
+        .then(() => {
+          displayModal("Email Verification", "Email was sent to " + mUser.email)
+        })
+        .catch(() => {
+          displayModal("Email Verification", "Failed sending email to " + mUser.email)
+        })
     })
 
 
@@ -303,7 +342,7 @@
       areaManageAccount.style.display = "none"
       areaCreateAccount.style.display = "none"
       areaCreateAccount.style.display = "block"
-    })   
+    })
 
     navManageAccount.addEventListener("click", () => {
       areaMain.style.display = "none"
@@ -317,7 +356,7 @@
         ma_line2.innerHTML = "Your account is verified."
         ma_button_send_verification_mail.disabled = true
       }
-      else{
+      else {
         ma_line2.innerHTML = "Your account needs verfification. Use button below to receive a verification link."
         ma_button_send_verification_mail.disabled = false
       }
@@ -343,24 +382,8 @@
       myModal.show()
     }
 
-    // Erzeugung von Testdaten - muss später raus.
-    var mPostList = [];
-    for (let i = 0; i < 3; i++) {
-      mPostList.push({
-        email: "email_" + i + "@haw-landshut.de",
-        body: "Text" + i
-      })
-    }
 
-    console.log(mPostList);
-
-    var template = document.getElementById("post_view")
-    mPostList.forEach((post) => {
-      var li = template.content.cloneNode(true)
-      li.getElementById("line1").textContent = post.email;
-      li.getElementById("line2").textContent = post.body;
-      document.getElementById("ah_ul").appendChild(li)
-    })
+  
 
   </script>
 
